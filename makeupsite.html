@@ -1,0 +1,512 @@
+<html>
+	<head>
+			<link href="/favicon.ico" type="image/x-icon" rel="icon" />
+
+		<!-- <link rel="stylesheet" type="text/css" href="style2.css"> -->
+		<title>numele paginii</title>
+	</head>
+			<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		
+
+
+	<body>
+		
+
+<style>
+	body {
+    background-repeat: repeat-2;
+    background-color:#333;
+    background-attachment: fixed;
+    margin:0;
+
+}
+.w3-tangerine {
+    font-family: "Tangerine", serif; 
+}
+
+
+
+.navbar {
+    z-index: 1;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  right: 2px;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #ddd;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+
+.flex-grid {
+    width: 100%;
+    margin-top: 55px;
+	height: auto;
+	display: flex;
+	justify-content:space-around;
+	flex-align:center;
+	flex-wrap:wrap;
+    flex-direction:row;
+    
+}
+.box {
+     /* width: 95%;  */
+    height: 100px;
+    padding: 5px;
+    margin: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     background-color:rgba(90, 90, 90, 0.5);
+     padding: 25px;
+    }
+
+    .box2 {
+        width: 95%; 
+        /* height: 50px; */
+        padding: 5px;
+        margin: 10px;
+        margin-left: 25px;
+        margin-right: 25px;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+         background-color:rgba(90, 90, 90, 0.5);
+        }
+.col {
+width: 300px;
+height: 350px;
+padding: 5px;
+margin: 10px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ background-color:rgba(90, 90, 90, 0.5);
+}
+/*dropdown buton produse*/
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+.dropbtn{
+    color:#ddd;
+}
+.dropbtn:hover{
+    background-color: #ddd;
+    color: #333;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px ;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: white;
+    background-color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+    text-align: center;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+body, html{
+    height:100%;
+    margin:0;
+    
+   
+  }
+  
+  .img1, .img2{
+    position:relative;
+    opacity:0.70;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+  }
+  
+  .img1{
+    background-image:url("https://cdn.hipwallpaper.com/i/36/9/Yx0ciV.jpg");
+    min-height:100%;
+    
+  }
+  
+  .img2{
+    background-image:url("http://www.clearogen.com/wp-content/uploads/2015/10/o-MAKEUP-BRUSHES-facebook.jpg");
+    min-height:100%;
+    /*filter: blur(1px);*/
+  }
+  
+  
+  .section{
+    text-align:center;
+    background-blend-mode: inherit;    
+  }
+  
+  
+  .navbar input[type=text] {
+  float: left;
+  padding: 6px;
+  margin-top: 8px;
+  height: 24px;
+  width: 200px;
+  margin-left: 16px;
+  border: none;
+  font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+  
+  .text{
+    position:absolute;
+    top:20%;
+    width:100%;
+    height: 100%;
+    text-align:center;
+    color:white;
+    font-size:30px;
+    letter-spacing:8px;
+    text-transform:uppercase;
+  }
+footer div{
+    display: block;
+    float: left;
+    width: 33%;
+    color: white;
+    font-size: 15px;
+
+  }
+  footer{
+    height: 40px;
+    padding: 10px;
+   
+    padding-left: 30px;
+  }
+  a{
+      color: white;
+  }
+ 
+  .mySlides {display:none;
+    height: 500px;
+}
+
+.slider{
+    padding-top: 900px;
+    padding-bottom: 70px;
+    width: 90%;
+    margin: 55px;
+}
+
+
+.modalDialog {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #333;
+
+
+	background-color: rgba(192,192,192,0.2);
+	opacity:0;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 300px;
+	height: 280px;
+	position: center;
+	
+	background-color: rgba(192,192,192,0.95);
+
+	margin:5% auto;
+	
+	padding: 25px 25px 25px 25px;
+	border-radius: 10px;
+	
+	}
+
+	input[type=text], input[type=password], input[type=email] {
+    width: 100%;}
+input[type=submit]{
+	color: black;
+}
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- //////////////// -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script>	
+
+
+	//var socket = io();
+//localStorage("Autentificat","nu");
+$(document).ready(function(){
+	$("#modal").click(function(){
+		var socket = io();
+
+		 //localStorage.Autentificat='nu';
+		var aut=localStorage.getItem("Autentificat");
+		console.log(localStorage.Autentificat);
+		if(localStorage.Autentificat=="nu")
+		{fref="#openModal"; console.log("vrverv");}
+		else {
+			var queryString="?"+localStorage.Email;
+			window.location.href = "cont.html" + queryString;
+				
+		}
+
+	});
+	$("#submit").click(function(){
+		var socket = io();
+		var email=$("#mail").val();
+		var parola=$("#parola").val();
+		console.log(email+"   "+parola);
+		socket.emit('Autentificare',{"email":email,"parola":parola});
+
+		// socket.emit('Autentificare',{"email":email,"parola":parola});
+		socket.on("Autentificat",function(Autentificat){
+			console.log(Autentificat);
+			if(Autentificat=="da")
+			{	localStorage.setItem("Autentificat","da");
+				localStorage.setItem("Email",email);
+				localStorage.setItem("Parola",parola);
+				//console.log(Autentificat.nume+"&"+Autentificat.prenume+"&"+Autentificat.adresa+"&"+Autentificat.email+"&"+Autentificat.telefon);
+				var queryString="?"+email;
+				window.location.href = "cont.html" + queryString;
+				//console.log("iv");
+			}
+			if(Autentificat=="nu"){
+				alert("Email sau parola incorecta!");
+			}
+		});
+
+	});
+	
+});
+
+	$(document).ready(function(){	
+			$( ".img1" ).click(function() {
+			window.open("produse.html","_self");
+});});
+			
+$(document).ready(function(){
+		$("#fata").click(function(){
+			var queryString = "?fata";
+					window.location.href = "Produse.html" + queryString;
+
+		})
+		$("#ochi").click(function(){
+			var queryString = "?Ochi";
+					window.location.href = "Produse.html" + queryString;
+
+		})
+		$("#buze").click(function(){
+			var queryString = "?Buze";
+					window.location.href = "Produse.html" + queryString;
+
+    });
+  });
+
+
+$(document).ready(function(){
+$(".search").on('keypress',function(e){
+			if(e.which==13){
+				console.log("hvhj");
+					// $(".col").remove();
+				// var node=document.getElementsByClassName("flex-grid");
+				var input=document.getElementsByClassName('search')[0].value;
+				var queryString = "?"+input;
+					window.location.href = "Produse.html" + queryString;
+
+				
+		}		});
+});
+
+		
+			</script>
+<!-- ///////////////////////// -->
+	<!-- <div class="navbar"> -->
+  
+
+		<div class="navbar">
+			<!-- <a href="#open">LogIn</a> -->
+			<a href="cos.html">Cos</a>
+			<a href="wishlist.html">Wishlist</a>
+			<input class="search" type="text" placeholder="Search..">
+			<a href="makeupsite.html">Home</a>
+			<div class ="dropdown">
+				<button class ="dropbtn">Produse <i class="produse"></i></button>
+					<div class="dropdown-content">
+						<a id="fata" href="#produse.html">Fata</a>
+						<a id="ochi" href="#produse.html">Ochi</a>
+						<a id="buze" href="#produse.html">Buze</a>
+					  </div>
+				
+	
+				  </div>
+				  
+
+
+				<div class ="dropdown">
+					<button class ="dropbtn">Contul meu <i class="produse"></i></button>
+						<div class="dropdown-content">
+							<a id="modal" href="#openModal">Intra in cont</a>
+							<a  href="login.html">Cont nou</a>
+							<!-- <a id="buze" href="produse.html">Buze</a> -->
+						  </div>
+					
+		
+					  </div>
+					  
+	</div>
+		
+
+
+				<div class="img1" h>
+					<div class="text">
+						<h1>
+						Makeup shop
+						</h1>
+					  </div>
+				  
+
+
+				<!--  -->
+								<div class="slider">
+										<img class="mySlides" src="https://eb124f3b0244881230ea-06086e61dfc956d2ddc184b4b320da15.ssl.cf1.rackcdn.com/cosmetics_25.jpg" style="width:100%">
+										<img class="mySlides" src="https://c.wallhere.com/photos/5b/96/estee_lauder_cosmetics_luxury-1075265.jpg!d" style="width:100%">
+										<img class="mySlides" src="http://2.bp.blogspot.com/-UxGnCHcqtIY/Tm3tvE1uEeI/AAAAAAAAFKc/-2K_E9hLk_0/s1600/Productos_fondo_negro.jpg" style="width:100%">
+										<img class="mySlides" src="https://static1.squarespace.com/static/5323c515e4b0dea732e8c312/t/53b230e2e4b0e06a4968b711/1404186861648/" style="width:100%">
+										<img class="mySlides" src="https://www.maccosmetics.com/media/export/cms/mpp_ambient_headers/franchise_MPP_Ambient_0000_Pro%20Longwear%20US%20and%20CA.jpg" style="width:100%">
+										<img class="mySlides" src="http://s3.amazonaws.com/medias.photodeck.com/85f7cb1b-a490-43f5-8778-24bc876eb060/cosmetics_photography_1_large.jpg" style="width:100%">
+
+										<img class="mySlides" src="https://static1.squarespace.com/static/568bea5540667a54498bf784/56a20f753b0be3e164f16ce0/5784d73e29687fbea45e0221/1520942603988/LUX-COSMETICS_PHOTOGRAPHY-7-DELILAH_TUBES.jpg" style="width:100%">
+									  </div>
+									  <script>
+									  var myIndex = 0;
+									  carousel();
+									  
+									  function carousel() {
+										  var i;
+										  var x = document.getElementsByClassName("mySlides");
+										  for (i = 0; i < x.length; i++) {
+											 x[i].style.display = "none";  
+										  }
+										  myIndex++;
+										  if (myIndex > x.length) {myIndex = 1}    
+										  x[myIndex-1].style.display = "block";  
+										  setTimeout(carousel, 2000); // Change image every 2 seconds
+									  }
+									  </script>
+
+<!--  -->
+</div>
+
+<footer>
+	<div>09483687463</div>
+<div>
+	<address>
+		<a href="mailto:machiaje@yahoo.com">contact@yahoo.com</a> 
+		</address>
+	</div>	
+	<div>Calea Floreasca Nr.246B, Etaj 1,
+		077190 Bucuresti, sector 1</div>
+</footer>
+<form id="openModal" class="modalDialog">
+	<div>
+	  <a href="#close" title="Close" class="close">X</a>
+	  <h3>Autentificare</h3>
+  
+	<div class="container">
+	  <label for="uname"><b>Email</b></label><br>
+	  <input id="mail" type="text" placeholder="Introduceti email-ul" name="uname" required>
+	<br>
+	  <label for="psw"><b>Password</b></label>  <br> <br>
+	  <input id="parola" type="password" placeholder="Enter Password" name="psw" required><br>
+  
+	  
+	  <input id="submit" type="submit" name="sub"><br>
+	  
+	  
+	</div>
+  </form>
+<!-- 
+<form id="open" class="modalDialog">
+	<div>
+	  <a href="#close" title="Close" class="close">X</a>
+	  <h3>Autentificare</h3>
+  
+	<div class="container">
+	  <label for="uname"><b>Email</b></label><br>
+	  <input id="mail" type="text" placeholder="Introduceti email-ul" name="uname" required>
+	<br>
+	  <label for="psw"><b>Password</b></label>  <br> <br>
+	  <input id="parola" type="password" placeholder="Enter Password" name="psw" required><br>
+  
+	  
+	  <input id="submit" type="submit" name="sub"><br>
+	  
+	</div>
+  </form>
+ -->
+
+
+	</body>
+
+</html>
+
+​
+

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<link rel="stylesheet" type="text/css" href="style2.css">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+</head>
+<body>
+        <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<style>
+				body {
+				background-repeat: repeat-2;
+				background-color:#333;
+				background-attachment: fixed;
+				margin:0;
+			
+			}
+			.w3-tangerine {
+				font-family: "Tangerine", serif; 
+			}
+			
+			
+			
+			.navbar {
+				z-index: 1;
+			  background-color: #333;
+			  position: fixed;
+			  top: 0;
+			  width: 100%;
+			  right: 2px;
+			}
+			
+			.navbar a {
+			  float: right;
+			  display: block;
+			  color: #ddd;
+			  text-align: center;
+			  padding: 14px 16px;
+			  text-decoration: none;
+			  font-size: 17px;
+			}
+			
+			.navbar a:hover {
+			  background: #ddd;
+			  color: black;
+			}
+			
+			.main {
+			  padding: 16px;
+			  margin-top: 30px;
+			  height: 1500px; /* Used in this example to enable scrolling */
+			}
+			
+			.flex-grid {
+				width: 100%;
+				margin-top: 55px;
+				height: auto;
+				display: flex;
+				justify-content:space-around;
+				flex-align:center;
+				flex-wrap:wrap;
+				flex-direction:row;
+				
+			}
+			.box {
+				 /* width: 95%;  */
+				height: 100px;
+				padding: 5px;
+				margin: 10px;
+				margin-left: 25px;
+				margin-right: 25px;
+				 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				 background-color:rgba(90, 90, 90, 0.5);
+				 padding: 25px;
+				}
+			
+				.box2 {
+					width: 95%; 
+					/* height: 50px; */
+					padding: 5px;
+					margin: 10px;
+					margin-left: 25px;
+					margin-right: 25px;
+					 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					 background-color:rgba(90, 90, 90, 0.5);
+					}
+			.col {
+			width: 300px;
+			height: 350px;
+			padding: 5px;
+			margin: 10px;
+			 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			 background-color:rgba(90, 90, 90, 0.5);
+			}
+			/*dropdown buton produse*/
+			.dropdown {
+				float: right;
+				overflow: hidden;
+			}
+			
+			.dropdown .dropbtn {
+				font-size: 16px;    
+				border: none;
+				outline: none;
+				padding: 14px 16px;
+				background-color: inherit;
+				font-family: inherit;
+				margin: 0;
+			}
+			.dropbtn{
+				color:#ddd;
+			}
+			.dropbtn:hover{
+				background-color: #ddd;
+				color: #333;
+			}
+			
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #333;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px ;
+				z-index: 1;
+			}
+			
+			.dropdown-content a {
+				float: none;
+				color: white;
+				background-color: #333;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+				text-align: right;
+				text-align: center;
+			}
+			
+			
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+			body, html{
+				height:100%;
+				margin:0;
+				
+			   
+			  }
+			  
+			  .img1, .img2{
+				position:relative;
+				opacity:0.70;
+				background-position:center;
+				background-size:cover;
+				background-repeat:no-repeat;
+				background-attachment:fixed;
+			  }
+			  
+			  .img1{
+				background-image:url("https://cdn.hipwallpaper.com/i/36/9/Yx0ciV.jpg");
+				min-height:100%;
+				
+			  }
+			  
+			  .img2{
+				background-image:url("http://www.clearogen.com/wp-content/uploads/2015/10/o-MAKEUP-BRUSHES-facebook.jpg");
+				min-height:100%;
+				/*filter: blur(1px);*/
+			  }
+			  
+			  
+			  .section{
+				text-align:center;
+				background-blend-mode: inherit;    
+			  }
+			  
+			  
+			  .navbar input[type=text] {
+			  float: left;
+			  padding: 6px;
+			  margin-top: 8px;
+			  height: 24px;
+			  width: 200px;
+			  margin-left: 16px;
+			  border: none;
+			  font-size: 17px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			
+			  
+			  .text{
+				position:absolute;
+				top:20%;
+				width:100%;
+				height: 100%;
+				text-align:center;
+				color:white;
+				font-size:30px;
+				letter-spacing:8px;
+				text-transform:uppercase;
+			  }
+			footer div{
+				display: block;
+				float: left;
+				width: 33%;
+				color: white;
+				font-size: 15px;
+			
+			  }
+			  footer{
+				height: 40px;
+				padding: 10px;
+			   
+				padding-left: 30px;
+			  }
+			  a{
+				  color: white;
+			  }
+			 
+			  .mySlides {display:none;
+				height: 500px;
+			}
+			
+			.slider{
+				padding-top: 900px;
+				padding-bottom: 70px;
+				width: 90%;
+				margin: 55px;
+			}
+			
+			
+			.modalDialog {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: #333;
+			
+			
+				background-color: rgba(192,192,192,0.2);
+				opacity:0;
+				pointer-events: none;
+			}
+			.modalDialog:target {
+				opacity:1;
+				pointer-events: auto;
+			}
+			
+			.modalDialog > div {
+				width: 300px;
+				height: 280px;
+				position: center;
+				
+				background-color: rgba(192,192,192,0.95);
+			
+				margin:5% auto;
+				
+				padding: 25px 25px 25px 25px;
+				border-radius: 10px;
+				
+				}
+			
+				input[type=text], input[type=password], input[type=email] {
+				width: 100%;}
+			input[type=submit]{
+				color: black;
+			}
+				</style>
+	
+
+
+
+<style>
+	input[type=text], input[type=password], input[type=email] {
+    width: 100%;}
+input[type=submit]{
+	color: black;
+}
+.butonN{
+				background-color:rgba(90, 90, 90, 0.5);
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  				border: none;
+  				color: white;
+  				padding: 15px 32px;
+  				text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 25px 2px ;
+  				cursor: pointer;
+ 
+  
+			}
+	
+	</style>
+<script>
+
+
+$(document).ready(function(){
+	$("#modal").click(function(){
+		//var aut=localStorage.getItem("Autentificat");
+		console.log(localStorage.Autentificat);
+		if(localStorage.Autentificat=="nu")
+		href="#openModal";		else {
+			window.location.href = "cont.html";
+				
+		}
+
+	});
+	$("#submit").click(function(){
+		var socket = io();
+
+		var email=$("#mail").val();
+		var parola=$("#parola").val();
+		console.log(email+"   "+parola);
+		socket.emit('Autentificare',{"email":email,"parola":parola});
+		socket.on("Autentificat",function(Autentificat){
+			console.log(Autentificat);
+			if(Autentificat=="da")
+			{	localStorage.setItem("Autentificat","da");
+				localStorage.setItem("Email",email);
+				localStorage.setItem("Parola",parola);
+				//console.log(Autentificat.nume+"&"+Autentificat.prenume+"&"+Autentificat.adresa+"&"+Autentificat.email+"&"+Autentificat.telefon);
+				var queryString="?"+email;
+				window.location.href = "cont.html" + queryString;
+				//console.log("iv");
+			}
+			if(Autentificat=="nu"){
+				alert("Email sau parola incorecta!");
+			}
+		});
+
+	});
+});
+
+$(document).ready(function(){
+localStorage.setItem('Autentificat',"da");
+document.getElementById("parola").style.visibility="hidden";
+document.getElementById("parola1").style.visibility="hidden";
+document.getElementById("parola2").style.visibility="hidden";
+document.getElementById("parola3").style.visibility="hidden";
+document.getElementById("p3").style.visibility="hidden";
+document.getElementById("p2").style.visibility="hidden";
+document.getElementById("p1").style.visibility="hidden";
+
+		$("#fata").click(function(){
+			var queryString = "?Fata";
+					window.location.href = "Produse.html" + queryString;
+
+		});
+		$("#ochi").click(function(){
+			var queryString = "?Ochi";
+					window.location.href = "Produse.html" + queryString;
+
+		});
+		$("#buze").click(function(){
+			var queryString = "?Buze";
+					window.location.href = "Produse.html" + queryString;
+
+		});});
+
+//var queryString = decodeURIComponent(window.location.search); //parsing
+//queryString = queryString.substring(1);
+//var queries = queryString.split("&");
+  
+  $(document).ready(function(){
+	  var socket=io();
+	  console.log("diyvwciye     "+localStorage.Email);
+	  socket.emit('Cont',{"email":localStorage.Email});
+
+socket.on('ContA',function(Cont){
+			console.log(Cont+" "+Cont.Prenume);
+		document.getElementById("nume").value=Cont.Nume;
+		document.getElementById("prenume").value=Cont.Prenume;
+		document.getElementById("adresa").value=Cont.Adresa;
+		document.getElementById("telefon").value=Cont.Telefon;
+		document.getElementById("email").value=Cont.Email;
+});
+
+  });
+
+$(document).ready(function(){
+		$("#Iesi").click(function(){
+			localStorage.setItem("Autentificat","nu");
+			window.location.href="makeupsite.html";
+
+		});
+		$("#Edit").click(function(){
+			document.getElementById("nume").readOnly=false;
+			document.getElementById("prenume").readOnly=false;
+			document.getElementById("email").readOnly=false;
+			document.getElementById("adresa").readOnly=false;
+			document.getElementById("telefon").readOnly=false;
+			document.getElementById("parola").style.visibility="visible";
+			//document.getElementById("parola").contentEditable="true";
+			document.getElementById("parola1").style.visibility="visible"
+			document.getElementById("parola1").readOnly=false;
+			document.getElementById("parola2").style.visibility="visible"
+			document.getElementById("parola2").readOnly=false;
+			document.getElementById("parola3").style.visibility="visible"
+			document.getElementById("parola3").readOnly=false;
+			document.getElementById("p1").readOnly=false;
+			document.getElementById("p2").readOnly=false;
+			document.getElementById("p3").readOnly=false;
+			document.getElementById("p2").style.visibility="visible"
+			document.getElementById("p1").style.visibility="visible"
+			document.getElementById("p3").style.visibility="visible"
+
+			$("#parola").click(function(){
+				var parola1=$("#parola1").val();
+				var parola2=$("#parola2").val();
+				//console.log($("#nume");
+				if(parola1!=parola2){
+					alert("Parole diferite!");
+				}else
+					if($("#parola3").val()==localStorage.Parola&&parola1==parola2)
+					{	var socket=io();
+						var nume=$("#nume").val();
+						var prenume=$("#prenume").val();
+						var email=$("#email").val();
+						var adresa=$("#adresa").val();
+						var telefon=$("#telefon").val();
+						socket.emit("Update",{"nume":nume,"prenume":prenume,"email":email,"adresa":adresa,"telefon":telefon,"parola":parola1,"EmailVechi":localStorage.Email,"ParolaVeche":localStorage.Parola});
+						localStorage.setItem("Email",email);
+						localStorage.setItem("Parola",parola1);
+						document.getElementById("nume").contentEditable="false";
+			document.getElementById("prenume").readOnly=true;
+			document.getElementById("email").readOnly=true;
+			document.getElementById("adresa").readOnly=true;
+			document.getElementById("telefon").readOnly=true;
+			document.getElementById("parola").style.visibility="hidden";
+			//document.getElementById("parola").contentEditable="true";
+			document.getElementById("parola1").style.visibility="hidden"
+			document.getElementById("parola1").readOnly=true;
+			document.getElementById("parola2").style.visibility="hidden"
+			document.getElementById("parola2").readOnly=true;
+			document.getElementById("parola3").style.visibility="hidden"
+			document.getElementById("parola3").readOnly=true;
+			document.getElementById("p1").style.visibility="hidden"
+			document.getElementById("p1").readOnly=true;
+			document.getElementById("p2").style.visibility="hidden"
+			document.getElementById("p2").readOnly=true;
+			document.getElementById("p3").style.visibility="hidden"
+			document.getElementById("p3").readOnly=true;
+			
+			alert("Datele au fost actualizate!");
+
+					}
+					else if($("#parola3").val()!=localStorage.Parola){
+
+						alert("Parola gresita!")
+					}
+			
+
+			});
+			});
+		$("#fata").click(function(){
+			var queryString = "?Fata";
+					window.location.href = "Produse.html" + queryString;
+
+		});
+		$("#ochi").click(function(){
+			var queryString = "?Ochi";
+					window.location.href = "Produse.html" + queryString;
+
+		});
+		$("#buze").click(function(){
+			var queryString = "?Buze";
+					window.location.href = "Produse.html" + queryString;
+
+		});
+});
+
+	$(document).ready(function(){	
+			$( ".img1" ).click(function() {
+			window.open("produse.html","_self");
+});});
+			
+
+$(document).ready(function(){
+$(".search").on('keypress',function(e){
+			if(e.which==13){
+				console.log("hvhj");
+					// $(".col").remove();
+				// var node=document.getElementsByClassName("flex-grid");
+				var input=document.getElementsByClassName('search')[0].value;
+				var queryString = "?"+input;
+					window.location.href = "Produse.html" + queryString;
+
+				
+		}		});
+});
+</script>
+<div class="navbar">
+		<!-- <a href="#open">LogIn</a> -->
+		<a href="cos.html">Cos</a>
+		<a href="wishlist.html">Wishlist</a>
+		<input class="search" type="text" placeholder="Search..">
+		<a href="makeupsite.html">Home</a>
+		<div class ="dropdown">
+			<button class ="dropbtn">Produse <i class="produse"></i></button>
+				<div class="dropdown-content">
+					<a id="fata" href="#produse.html">Fata</a>
+					<a id="ochi" href="#produse.html">Ochi</a>
+					<a id="buze" href="produse.html">Buze</a>
+				  </div>
+			
+
+			  </div>
+			  
+
+
+			<div class ="dropdown">
+				<button class ="dropbtn">Contul meu <i class="produse"></i></button>
+					<div class="dropdown-content">
+						<a id="modal" href="#openModal">Intra in cont</a>
+						<a  href="login.html">Cont nou</a>
+						<!-- <a id="buze" href="produse.html">Buze</a> -->
+					  </div>
+				
+	
+				  </div>
+				  
+</div>
+<br>
+<br>
+<br>
+<label style="margin-left: 60px;width: 300px"><b><font color="white">Nume</font></b></label><br>
+<input type="text" id="nume" readonly="true" placeholder="Nume" style="margin-left: 30px;width: 300px"><br><br>
+<label  style="margin-left: 60px;width: 300px"><b><font color="white">Prenume</font></b></label><br>
+<input type="text" id="prenume" readonly="true" placeholder="Prenume" style="margin-left: 30px;width: 300px"><br><br>
+<label style="margin-left: 60px;width: 300px" ><b><font color="white">Adresa</font></b></label><br>
+<input type="text" id="adresa" readonly="true" placeholder="Adresa" style="margin-left: 30px;width: 300px"><br><br>
+<label style="margin-left: 60px;width: 300px" ><b><font color="white">Adresa de email</font></b></label><br>
+<input type="email" id="email" readonly="true" placeholder="Email"style="margin-left: 30px;width: 300px"><br><br>
+<label style="margin-left: 60px;width: 300px"><b><font color="white">Numar de telefon</font></b></label><br>
+<input type="tel" id="telefon" readonly="true" placeholder="Nr. telefon" style="margin-left: 30px;width: 300px"><br><br>
+<label id="p3" style="margin-left: 60px;width: 300px"><b><font color="white">Parola veche</font></b></label><br>
+<input  type="password" id="parola3" readonly="true" style="margin-left: 30px;width: 300px" placeholder="Parola veche"><br><br>
+<label id="p2" style="margin-left: 60px;width: 300px"> <b> <font color="white">Introduceti parola noua</font></b></label><br>
+<input type="password" id="parola1"  readonly="true" style="margin-left: 30px;width: 300px" placeholder="Parola noua"><br><br>
+<label id="p1" style="margin-left: 60px;width: 300px"><b><font color="white">Introduceti parola noua inca o data</font></b></label><br>
+<input  type="password" id="parola2"  readonly="true" style="margin-left: 30px;width: 300px" placeholder="Parola noua"><br><br>
+
+
+
+
+
+<!-- 
+<input type="text" id="nume" readonly="true">
+
+<input type="text" id="prenume" readonly="true">
+
+<input type="text" id="adresa" readonly="true">
+
+<input type="email" id="email" readonly="true">
+<input type="tel" id="telefon" readonly="true">
+<input id="parola3" type="password" readonly="true" placeholder="Parola veche"><br>
+
+<input id="parola1" type="password" readonly="true" placeholder="Parola noua"><br>
+<input id="parola2" type="password" readonly="true" placeholder="Parola noua"><br> -->
+
+<button id="Edit" class="butonN">Editare informatii</button>
+<button id="Iesi" class="butonN">Iesi</button>
+<button id="parola" class="butonN">Salveaza</button>
+<br>
+<footer>
+	<div>09483687463</div>
+<div>
+	<address>
+		<a href="mailto:machiaje@yahoo.com">contact@yahoo.com</a> 
+		</address>
+	</div>	
+	<div>Calea Floreasca Nr.246B, Etaj 1,
+		077190 Bucuresti, sector 1</div>
+</footer>
+
+
+<form id="openModal" class="modalDialog">
+		<div>
+		  <a href="#close" title="Close" class="close">X</a>
+		  <h3>Autentificare</h3>
+	  
+		<div class="container">
+		  <label for="uname"><b>Email</b></label><br>
+		  <input id="mail" type="text" placeholder="Introduceti email-ul" name="uname" required>
+		<br>
+		  <label for="psw"><b>Password</b></label>  <br> <br>
+		  <input id="parola" type="password" placeholder="Enter Password" name="psw" required><br>
+	  
+		  <!-- <input type="email" placeholder="Enter email" name="emailaddress" pattern="[a-z0-9._%+-]+@[a-z]+.[a-z]{2,3}$" required><br>
+	  
+		  <label for="gender">Gender</label><br>
+		  <input type="radio" name="gender" value="male">Male<br>
+		  <input type="radio" name="gender" value="female">Female<br>
+		  -->
+		  <input id="submit" type="submit" name="sub"><br>
+		  
+		</div>
+	  </form>
+
+<!-- <canvas id ="myAnimation"></canvas> -->
+
+
+</body>
+</html>

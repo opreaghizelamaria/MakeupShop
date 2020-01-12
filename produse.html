@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="style2.css">
+		<script src="/socket.io/socket.io.js"></script>
+		<title>numele paginii</title>
+	</head>
+			<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		
+
+
+	<body>
+
+			<style>
+					body {
+					background-repeat: repeat-2;
+					background-color:#333;
+					background-attachment: fixed;
+					margin:0;
+				
+				}
+				.w3-tangerine {
+					font-family: "Tangerine", serif; 
+				}
+				
+				
+				
+				.navbar {
+					z-index: 1;
+				  background-color: #333;
+				  position: fixed;
+				  top: 0;
+				  width: 100%;
+				  right: 2px;
+				}
+				
+				.navbar a {
+				  float: right;
+				  display: block;
+				  color: #ddd;
+				  text-align: center;
+				  padding: 14px 16px;
+				  text-decoration: none;
+				  font-size: 17px;
+				}
+				
+				.navbar a:hover {
+				  background: #ddd;
+				  color: black;
+				}
+				
+				.main {
+				  padding: 16px;
+				  margin-top: 30px;
+				  height: 1500px; /* Used in this example to enable scrolling */
+				}
+				
+				.flex-grid {
+					width: 100%;
+					margin-top: 55px;
+					height: auto;
+					display: flex;
+					justify-content:space-around;
+					flex-align:center;
+					flex-wrap:wrap;
+					flex-direction:row;
+					
+				}
+				.box {
+					 /* width: 95%;  */
+					height: 100px;
+					padding: 5px;
+					margin: 10px;
+					margin-left: 25px;
+					margin-right: 25px;
+					 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					 background-color:rgba(90, 90, 90, 0.5);
+					 padding: 25px;
+					}
+				
+					.box2 {
+						width: 95%; 
+						/* height: 50px; */
+						padding: 5px;
+						margin: 10px;
+						margin-left: 25px;
+						margin-right: 25px;
+						 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+						 background-color:rgba(90, 90, 90, 0.5);
+						}
+				.col {
+				width: 300px;
+				height: 350px;
+				padding: 5px;
+				margin: 10px;
+				 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				 background-color:rgba(90, 90, 90, 0.5);
+				}
+				/*dropdown buton produse*/
+				.dropdown {
+					float: right;
+					overflow: hidden;
+				}
+				
+				.dropdown .dropbtn {
+					font-size: 16px;    
+					border: none;
+					outline: none;
+					padding: 14px 16px;
+					background-color: inherit;
+					font-family: inherit;
+					margin: 0;
+				}
+				.dropbtn{
+					color:#ddd;
+				}
+				.dropbtn:hover{
+					background-color: #ddd;
+					color: #333;
+				}
+				
+				.dropdown-content {
+					display: none;
+					position: absolute;
+					background-color: #333;
+					min-width: 160px;
+					box-shadow: 0px 8px 16px 0px ;
+					z-index: 1;
+				}
+				
+				.dropdown-content a {
+					float: none;
+					color: white;
+					background-color: #333;
+					padding: 12px 16px;
+					text-decoration: none;
+					display: block;
+					text-align: right;
+					text-align: center;
+				}
+				
+				
+				.dropdown:hover .dropdown-content {
+					display: block;
+				}
+				body, html{
+					height:100%;
+					margin:0;
+					
+				   
+				  }
+				  
+				  .img1, .img2{
+					position:relative;
+					opacity:0.70;
+					background-position:center;
+					background-size:cover;
+					background-repeat:no-repeat;
+					background-attachment:fixed;
+				  }
+				  
+				  .img1{
+					background-image:url("https://cdn.hipwallpaper.com/i/36/9/Yx0ciV.jpg");
+					min-height:100%;
+					
+				  }
+				  
+				  .img2{
+					background-image:url("http://www.clearogen.com/wp-content/uploads/2015/10/o-MAKEUP-BRUSHES-facebook.jpg");
+					min-height:100%;
+					/*filter: blur(1px);*/
+				  }
+				  
+				  
+				  .section{
+					text-align:center;
+					background-blend-mode: inherit;    
+				  }
+				  
+				  
+				  .navbar input[type=text] {
+				  float: left;
+				  padding: 6px;
+				  margin-top: 8px;
+				  height: 24px;
+				  width: 200px;
+				  margin-left: 16px;
+				  border: none;
+				  font-size: 17px;
+					font-family: Arial, Helvetica, sans-serif;
+				}
+				
+				  
+				  .text{
+					position:absolute;
+					top:20%;
+					width:100%;
+					height: 100%;
+					text-align:center;
+					color:white;
+					font-size:30px;
+					letter-spacing:8px;
+					text-transform:uppercase;
+				  }
+				footer div{
+					display: block;
+					float: left;
+					width: 33%;
+					color: white;
+					font-size: 15px;
+				
+				  }
+				  footer{
+					height: 40px;
+					padding: 10px;
+				   
+					padding-left: 30px;
+				  }
+				  a{
+					  color: white;
+				  }
+				 
+				  .mySlides {display:none;
+					height: 500px;
+				}
+				
+				.slider{
+					padding-top: 900px;
+					padding-bottom: 70px;
+					width: 90%;
+					margin: 55px;
+				}
+				
+				
+				.modalDialog {
+					position: fixed;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					background-color: #333;
+				
+				
+					background-color: rgba(192,192,192,0.2);
+					opacity:0;
+					pointer-events: none;
+				}
+				.modalDialog:target {
+					opacity:1;
+					pointer-events: auto;
+				}
+				
+				.modalDialog > div {
+					width: 300px;
+					height: 280px;
+					position: center;
+					
+					background-color: rgba(192,192,192,0.95);
+				
+					margin:5% auto;
+					
+					padding: 25px 25px 25px 25px;
+					border-radius: 10px;
+					
+					}
+				
+					input[type=text], input[type=password], input[type=email] {
+					width: 100%;}
+				input[type=submit]{
+					color: black;
+				}
+					</style>
+			<style>
+
+					#ABC {
+					  background-color: whitesmoke;
+					 
+					}
+				
+					</style>
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+
+		<script type="text/javascript">
+$(document).ready(function(){
+	$("#modal").click(function(){
+		//var aut=localStorage.getItem("Autentificat");
+		console.log(localStorage.Autentificat);
+		if(localStorage.Autentificat=="nu")
+		href="#openModal";
+		else {
+			window.location.href = "cont.html";
+				
+		}
+
+	});
+	$("#submit").click(function(){
+		var socket = io();
+
+		var email=$("#mail").val();
+		var parola=$("#parola").val();
+		console.log(email+"   "+parola);
+		socket.emit('Autentificare',{"email":email,"parola":parola});
+		socket.on("Autentificat",function(Autentificat){
+			console.log(Autentificat);
+			if(Autentificat=="da")
+			{	localStorage.setItem("Autentificat","da");
+				localStorage.setItem("Email",email);
+				localStorage.setItem("Parola",parola);
+				//console.log(Autentificat.nume+"&"+Autentificat.prenume+"&"+Autentificat.adresa+"&"+Autentificat.email+"&"+Autentificat.telefon);
+				var queryString="?"+email;
+				window.location.href = "cont.html" + queryString;
+				//console.log("iv");
+			}
+			if(Autentificat=="nu"){
+				alert("Email sau parola incorecta!");
+			}
+		});
+
+	});
+});
+
+var queryString = decodeURIComponent(window.location.search); //parsing
+queryString = queryString.substring(1);
+console.log(queryString+"---------fghuhjok");
+
+
+    var x=0;
+	$(document).ready(function(){
+		$("#fata").click(function(){
+			var queryString = "?fata";
+					window.location.href = "Produse.html" + queryString;
+
+		})
+		$("#ochi").click(function(){
+			var queryString = "?Ochi";
+					window.location.href = "Produse.html" + queryString;
+
+		})
+		$("#buze").click(function(){
+			var queryString = "?Buze";
+					window.location.href = "Produse.html" + queryString;
+
+		})
+
+// <!-- Search -->
+		// var nodes=document.getElementById("prod");
+		$(".search").on('keypress',function(e){
+			if(e.which==13){
+				x=0;
+					$(".col").remove();
+				var node=document.getElementsByClassName("flex-grid");
+				var input=document.getElementsByClassName('search')[0].value;
+				for(var j=0;j<Produse.length;j++){
+					var result= Produse[j].Denumire.search(new RegExp(input, "i"));
+					//console.log(Produse[j].Denumire+"   "+input+"   "+result);
+					if(result>=0){ //condole.log("vre");
+					var div = document.createElement('div');
+					Produse[j].Ordine=x;
+					x++;
+   					div.className="col";
+    				div.innerHTML = '<h2>'+Produse[j].Denumire
+										+'</h2><h3>'+Produse[j].Pret
+										
+										+'</h3><img src="'+Produse[j].Poza
+										+'" width ='+200+'"height='+200+'/></p>'
+    				node[0].appendChild(div);
+					}
+				}
+				
+			}
+			newpage();
+		});
+
+	});
+
+		var i=0;
+		var Produse = [];
+	   $(function(){
+		   $.ajax({
+			 url: 'http://localhost:3000/Produse',
+			 type: 'get',
+			 //dataType: JSON,
+			 success: function (data) {
+			   console.log( data);
+			   var newData=JSON.stringify(data);
+			   newData=$.parseJSON(newData);
+			  console.log(newData);
+			  console.log( data);
+
+			//   localStorage.setItem("Produse",data);
+			//   var prod=localStorage.getItem("Produse");
+			//   console.log("ffffffedewf"+"      "+prod);
+			    $(data).each(
+			 					   function() {
+									Produse.push({
+      								  	idProduse: this.idProduse,
+     									Categorie: this.Categorie,
+     								    Denumire: this.Denumire,
+										Cantitate:this.Cantitate,
+										Pret:this.Pret,
+										Descriere:this.Descriere,
+										Poza:this.Poza,
+										Ordine:i
+   										 });
+			 						i++;
+									
+								   });
+				
+				$(document).ready(function(){x=0;
+            		var node=document.getElementsByClassName("flex-grid");
+					for(var i = 0; i < Produse.length; i++) {
+						if(queryString!=''&&Produse[i].Categorie==queryString)
+  					{var div = document.createElement('div');
+   					//console.log(i);
+					   div.className="col";
+					   //div.onclick=newpage(Produse[i].idProduse);
+					  // console.log(Produse[i].Denumire);
+    				div.innerHTML = '<h2 id="nume">'+Produse[i].Denumire
+										+'</h2><h3>'+Produse[i].Pret
+										
+										+'</h3><img src="'+Produse[i].Poza
+										+'" width ='+200+'"height='+200+'/></p>'
+					node[0].appendChild(div);
+					Produse[i].Ordine=x;x++;					
+
+				}
+					else if(queryString!=''&& (Produse[i].Denumire.search(new RegExp(queryString, "i"))>=0)){
+						var div = document.createElement('div');
+   					//console.log(i);
+					   div.className="col";
+					   //div.onclick=newpage(Produse[i].idProduse);
+					  // console.log(Produse[i].Denumire);
+    				div.innerHTML = '<h2 id="nume">'+Produse[i].Denumire
+										+'</h2><h3>'+Produse[i].Pret
+										
+										+'</h3><img src="'+Produse[i].Poza
+										+'" width ='+200+'"height='+200+'/></p>'
+					node[0].appendChild(div);
+					Produse[i].Ordine=x;x++;	
+					}
+					else if(queryString==''){
+						var div = document.createElement('div');
+   					//console.log(i);
+					   div.className="col";
+					   //div.onclick=newpage(Produse[i].idProduse);
+					  // console.log(Produse[i].Denumire);
+    				div.innerHTML = '<h2 id="nume">'+Produse[i].Denumire
+										+'</h2><h3>'+Produse[i].Pret
+										
+										+'</h3><img src="'+Produse[i].Poza
+										+'" width ='+200+'"height='+200+'/></p>'
+					node[0].appendChild(div);
+
+					Produse[i].Ordine=x;
+					x++;
+
+					}
+					}});
+					newpage();
+						
+	   },
+			 error: function (XMLHttpRequest, textStatus, errorThrown) {
+			   console.log('error', errorThrown);
+			 }
+		   });
+		 });
+
+	
+
+
+		function newpage(){
+
+			$(document).ready(function() {
+					$(".flex-grid div").click(function() {
+					var index = $(this).index();
+					for(var y=0;y<Produse.length;y++){
+						if(index==Produse[y].Ordine)
+						{
+							var queryString = "?" + Produse[y].Denumire + "&" + Produse[y].Pret+"&"+Produse[y].Descriere+"&"+Produse[y].Poza;
+							window.location.href = "Produs.html" + queryString;
+						}
+					}
+					}); });
+
+		}
+
+
+	   
+	   </script>
+	
+	<div class="navbar">
+		<!-- <a href="#open">LogIn</a> -->
+		<a href="cos.html">Cos</a>
+		<a href="wishlist.html">Wishlist</a>
+		<input class="search" type="text" placeholder="Search..">
+		<a href="makeupsite.html">Home</a>
+		<div class ="dropdown">
+			<button class ="dropbtn">Produse <i class="produse"></i></button>
+				<div class="dropdown-content">
+					<a id="fata" href="#produse.html">Fata</a>
+					<a id="ochi" href="#produse.html">Ochi</a>
+					<a id="buze" href="#produse.html">Buze</a>
+				  </div>
+			
+
+			  </div>
+			  
+
+
+			<div class ="dropdown">
+				<button class ="dropbtn">Contul meu <i class="produse"></i></button>
+					<div class="dropdown-content">
+						<a id="modal" href="#openModal">Intra in cont</a>
+						<a  href="login.html">Cont nou</a>
+						<!-- <a id="buze" href="produse.html">Buze</a> -->
+					  </div>
+				
+	
+				  </div>
+				  
+</div>
+
+
+                <section class="section" id="ABC">
+				
+
+				<div class="flex-grid">
+
+				
+</div>
+</section>
+
+<footer>
+	<div>09483687463</div>
+<div>
+	<address>
+		<a href="mailto:machiaje@yahoo.com">contact@yahoo.com</a> 
+		</address>
+	</div>	
+	<div>Calea Floreasca Nr.246B, Etaj 1,
+		077190 Bucuresti, sector 1</div>
+</footer>
+
+
+<form id="openModal" class="modalDialog">
+	<div>
+	  <a href="#close" title="Close" class="close">X</a>
+	  <h3>Autentificare</h3>
+  
+	<div class="container">
+	  <label for="uname"><b>Username</b></label><br>
+	  <input type="text" placeholder="Enter Username" name="uname" required>
+	<br>
+	  <label for="psw"><b>Password</b></label>  <br> <br>
+	  <input type="password" placeholder="Enter Password" name="psw" required><br>
+	  <label for="emailaddress"><b>Email<b></label><br>
+  
+	  <!-- <input type="email" placeholder="Enter email" name="emailaddress" pattern="[a-z0-9._%+-]+@[a-z]+.[a-z]{2,3}$" required><br>
+  
+	  <label for="gender">Gender</label><br>
+	  <input type="radio" name="gender" value="male">Male<br>
+	  <input type="radio" name="gender" value="female">Female<br>
+	  -->
+	  <input type="submit" name="sub"><br>
+	  
+	</div>
+  </form>
+
+	</body>
+
+</html>
+
+​
+
