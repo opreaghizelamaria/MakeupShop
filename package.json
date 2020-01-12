@@ -4,6 +4,7 @@
   "description": "proiect cloud",
   "main": "site.js",
   "scripts": {
+        "start": "node site.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Maria Ghizela",
